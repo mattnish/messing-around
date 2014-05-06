@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 .wrapper {
   position: absolute;
   left: 0;
@@ -13,17 +14,15 @@
   top: 0;
   width: 100%;
   height: 100%;
-  font-family: 'Helvetica Neue', Helvetica, Sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
   -webkit-transform-style: preserve-3d;
   -webkit-perspective: 800px;
   background: #5fc082;
   color: white;
-  font-weight: 100;
-  font-size: 26px;
-  -webkit-transition: all 2s ease;
-  -moz-transition: all 2s ease;
-  transition: all 2s ease;
+  font-weight: 300;
+  font-size: 106px;
+  -webkit-transition: all 4s ease;
   z-index: 1;
   overflow: hidden;
 }
@@ -44,13 +43,13 @@
   display: inline-block;
   padding: 26px 36px;
   border-radius: 20px;
-  -webkit-transition: all 2s ease;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  -webkit-transform: translateY(500%);
+  -webkit-transition: all 4s ease;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2), 2px 2px 0 rgba(0, 0, 0, 0.2), 3px 3px 0 rgba(0, 0, 0, 0.2), 4px 4px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(550%);
 }
 .cool-container.showing .cool-wrap {
   -webkit-transform: translateY(-50%);
 }
 .cool-container.showing.transition-out .cool-wrap {
-  -webkit-transform: translateY(-200%);
+  -webkit-transform: translateY(-600%);
 }
