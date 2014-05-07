@@ -1,6 +1,5 @@
 ;(function ( $, window, document, undefined ) {
   "use strict";
-  
   $(function(){
     $('.cool-container').somethingCool({
       bgColors: ['#5fc082','#333333', '#3AAAC9']
@@ -14,29 +13,19 @@
   };
   
   var SomethingCool = function(element,options){
-    var bgColorsArray   = options.bgColors,
-        date            = new Date(),
+    var date            = new Date(),
         hours           = date.getHours(),
         minutes         = date.getMinutes();
+    this.bgColorsArray  = options.bgColors;
     this.timeString     = this.translateTime(hours,minutes);
-    this.totalBGs       = bgColorsArray.length;
+    this.totalBGs       = this.bgColorsArray.length;
     this.countInArray   = 0;
     this.$el            = $(element);
     
-    this.$el.css('background-color', bgColorsArray[this.countInArray]);
+    this.$el.css('background-color', this.bgColorsArray[this.countInArray]);
     this.$el.find('.cool-time').text(this.timeString);
     
-    var nextFunc = function(){
-        setTimeout(function(){
-          var date            = new Date(),
-              hours           = date.getHours(),
-              minutes         = date.getMinutes();
-          this.timeString     = this.translateTime(hours,minutes);
-          this.nextThing(this.nextColor(bgColorsArray));
-          nextFunc();
-        }.bind(this), 4100);
-    }.bind(this);
-    nextFunc();
+    this.nextTimer();
   }
   
   SomethingCool.prototype = {
@@ -76,6 +65,16 @@
       }
       
       return (isPM) ? (hours + ":" + minutes + " PM") : (hours + ":" + minutes + " AM");
+    },
+    nextTimer: function(){
+      setTimeout(function(){
+        var date            = new Date(),
+            hours           = date.getHours(),
+            minutes         = date.getMinutes();
+        this.timeString     = this.translateTime(hours,minutes);
+        this.nextThing(this.nextColor(this.bgColorsArray));
+        this.nextTimer();
+      }.bind(this), 4100);
     }
   }
   
